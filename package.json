@@ -1,0 +1,53 @@
+{
+  "name": "pump-bot",
+  "version": "1.0.0",
+  "description": "A simple bot that helps to take profit in organized pump events for cryptos.",
+  "main": "main.js",
+  "scripts": {
+    "debug": "node --inspect=127.0.0.1:9239 main.js",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "lint": "npx eslint",
+    "lint:watch": "npx esw -w --color",
+    "release:linux": "pkg package.json --out-path build -t node12-linux-x64",
+    "release:mac": "pkg package.json --out-path build -t node12-macos-x64",
+    "release:win": "pkg package.json --out-path build -t node12-win-x64",
+    "start": "node main.js",
+    "test": "DEBUG=pump-bot:tests jest --silent"
+  },
+  "keywords": [
+    "crypto",
+    "binance",
+    "pump&dump"
+  ],
+  "author": "Andrea Valla <valla.andrea@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "debug": "^4.3.1",
+    "husky": "^6.0.0",
+    "js-yaml": "^4.0.0",
+    "node-binance-api": "^0.12.5",
+    "pkg": "^4.5.1",
+    "pretty-quick": "^3.1.0",
+    "prompt": "^1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-watch": "^7.0.0",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "engines": {
+    "node": ">=12.x.x"
+  },
+  "bin": "main.js",
+  "jest": {
+    "displayName": "pump-bot",
+    "verbose": true
+  }
+}
