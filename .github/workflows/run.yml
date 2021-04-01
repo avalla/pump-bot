@@ -1,4 +1,6 @@
-name: Pump Bot CI
+name: PumpBot
+
+on: [push]
 
 jobs:
   test:

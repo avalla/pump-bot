@@ -4,7 +4,7 @@
  * @returns {number}
  */
 function round(number) {
-  return Math.round((number + Number.EPSILON) * 100_000_000) / 100_000_000;
+  return Math.ceil((number + Number.EPSILON) * 1_000_000) / 1_000_000;
 }
 
 module.exports = round;

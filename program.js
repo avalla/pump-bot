@@ -6,6 +6,7 @@ const prompt = require('./services/prompt')(configuration);
 const pump = require('./services/pump')(configuration);
 
 
+
 (async function () {
   console.log(banner)
   try {
@@ -29,7 +30,7 @@ const pump = require('./services/pump')(configuration);
     }
     console.log('> ', chalk.bgRed.white.bold(err), '\n');
     // if (process.env.NODE_ENV === 'development') {
-    console.error(err);
+    // console.error(err);
     // }
   }
 })();

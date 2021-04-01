@@ -23,6 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.0",
+    "commander": "^7.2.0",
     "debug": "^4.3.1",
     "husky": "^6.0.0",
     "js-yaml": "^4.0.0",
