@@ -8,9 +8,10 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "lint": "npx eslint",
     "lint:watch": "npx esw -w --color",
-    "release:linux": "pkg package.json --out-path build -t node12-linux-x64",
-    "release:mac": "pkg package.json --out-path build -t node12-macos-x64",
-    "release:win": "pkg package.json --out-path build -t node12-win-x64",
+    "releases": "yarn release:linux && yarn release:mac && yarn release:win",
+    "release:linux": "pkg package.json --output build/pump-bot-linux-x64 -t node12-linux-x64",
+    "release:mac": "pkg package.json --output build/pump-bot-macos-x64 -t node12-macos-x64",
+    "release:win": "pkg package.json --output build/pump-bot-win-x64.exe -t node12-win-x64",
     "start": "node main.js",
     "test": "DEBUG=pump-bot:tests jest --silent"
   },
