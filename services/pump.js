@@ -13,21 +13,18 @@ async function pump(options) {
     verbose: true,
     test: dryRun,
   });
-  if (dryRun) {
-    console.log('\n  ', chalk.red.bold('TEST MODE ENABLED! No order will be done'), '\n');
-  }
   const threshold = configuration.thresholds[quote];
 
   const marketPrice = await trading.marketPrice(binance, { pair });
   const quantity = Math.ceil(total / marketPrice);
 
-  console.log(Date.now(), 'Working with following pair:', chalk.red.bold(pair));
+  console.log(Date.now(), 'Working with pair', chalk.white.bold(pair), 'threshold is', chalk.white.bold(`${threshold} ${quote}`));
   console.log(
     Date.now(),
     'I will buy',
-    chalk.red.bold(`${quantity} ${base}`),
+    chalk.white.bold(`${quantity} ${base}`),
     'for',
-    chalk.red.bold(`${marketPrice * quantity} ${quote}`)
+    chalk.white.bold(`${marketPrice * quantity} ${quote}`)
   );
 
   if (marketPrice * quantity < threshold) {
@@ -49,7 +46,7 @@ async function pump(options) {
     console.log(
       Date.now(),
       '  Warning sellPrice is lower than buyPrice',
-      chalk.red.bold(`${sellPrice} < ${buyPrice}`),
+      chalk.white.bold(`${sellPrice} < ${buyPrice}`),
       'I will sell at market price'
     );
   }
@@ -69,25 +66,24 @@ async function pump(options) {
 
   // trovate prezzo di acquisto in seguito all'ordine
 
-  console.log(Date.now(), 'Results');
-  console.log(Date.now(), 'Buy price:   ', chalk.red.bold(`${buyPrice || marketPrice} ${base}`));
+  console.log();
+  console.log(chalk.bold('RESULTS'));
+  console.log('  Buy price:   ', chalk.white.bold(`${buyPrice || marketPrice} ${base}`));
   if (sellPrice < buyPrice || configuration.dry_run) {
-    console.log(Date.now(), 'Sell price:  ', chalk.red.bold('MARKET PRICE'));
+    console.log('  Sell price:  ', chalk.white.bold('MARKET PRICE'));
   } else {
-    console.log(Date.now(), 'Sell price:  ', chalk.red.bold(`${sellPrice} ${base}`));
-    console.log(Date.now(), 'Stop price:  ', chalk.red.bold(`${stopPrice} ${base}`));
+    console.log('  Sell price:  ', chalk.white.bold(`${sellPrice} ${base}`));
+    console.log('  Stop price:  ', chalk.white.bold(`${stopPrice} ${base}`));
     const estProfit = round(sellPrice * quantity - total);
     const estLoss = round(total - stopPrice * quantity);
     console.log(
-      Date.now(),
-      'Est. profit: ',
-      chalk.red.bold(`${estProfit} ${quote}`),
+      '  Est. profit: ',
+      chalk.white.bold(`${estProfit} ${quote}`),
       `(${Math.round((estProfit / total) * 100)}%)`
     );
     console.log(
-      Date.now(),
-      'Est. loss:   ',
-      chalk.red.bold(`${estLoss} ${quote}`),
+      '  Est. loss:   ',
+      chalk.white.bold(`${estLoss} ${quote}`),
       `(${Math.round((estLoss / total) * 100)}%)`
     );
   }

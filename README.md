@@ -67,8 +67,6 @@ Run pump-bot!
 ```
 $ yarn start -b WIN -q USDT -t 10.5 -p 0.01 -sl 0.01
 
-
-
  /$$$$$$$                                    /$$$$$$$              /$$
 | $$__  $$                                  | $$__  $$            | $$
 | $$  \ $$ /$$   /$$ /$$$$$$/$$$$   /$$$$$$ | $$  \ $$  /$$$$$$  /$$$$$$
@@ -82,36 +80,33 @@ $ yarn start -b WIN -q USDT -t 10.5 -p 0.01 -sl 0.01
                                   |__/
 
 Made in Italy with ❤ :: Version 1.0.0
+                      -> USE AT YOUR OWN RISK <-
 
-
-
-1617393206235 Command-line input received:
+1617399628169 Command-line input received:
    Interval:  5m
    Pair:      WINUSDT
    Total:     10.5
-   Profit:    1%
+   Profit:    2%
    Stop-loss: 1%
-1617393206236 Starting Pump-Bot...
-1617393206713 Working with following pair: WINUSDT
-1617393206713 I will buy 18655 WIN for 10.5005264 USDT
-  pump BUY WINUSDT 18655 +0ms
-1617393207031 > BUY FILLED orderId 88772068 :: Quantity 18655.00000000 Total 10.51022700
-1617393207310 > BALANCE 482.71350833 USDT :: 18655.00000000 WIN
-1617393207557 Minimum price in 5m was 0.00056065
-1617393207558 Sell price is 0.000566
-1617393207558 Calculated stop-loss price 0.000557
-  pump SELL WINUSDT 18655 0.000566 +0ms
-1617393208232 > SELL-OCO EXECUTING orderListId 22374158 :: Quantity 18655
-1617393208233   > STOP_LOSS_LIMIT NEW orderId 88772090 :: Price 0.00055700
-1617393208233   > LIMIT_MAKER     NEW orderId 88772091 :: Price 0.00056600
-1617393208233 > SELL :: Quantity 18655
-1617393208702 > BALANCE 482.71350833 USDT :: 0.00000000 WIN
-1617393208702 Results
-1617393208702 Buy price:    0.00056288 WIN
-1617393208702 Sell price:   0.000566 WIN
-1617393208702 Stop price:   0.000557 WIN
-1617393208702 Est. profit:  0.05873 USDT (1%)
-1617393208702 Est. loss:    0.109165 USDT (1%)
+1617399628169 Starting Pump-Bot...
+1617399628634 > MKT PRICE: 0.00056949
+1617399628635 Working with pair WINUSDT threshold is 10.1 USDT
+1617399628635 I will buy 18438 WIN for 10.50025662 USDT
+1617399628985 > BUY FILLED orderId 88959586 :: Quantity 18438.00000000 Total 10.50007224 (0.000569)
+1617399629261 > BALANCE 461.53082040 USDT :: 36908.00000000 WIN
+1617399629507 > MIN PRICE in 5m was 0.00056736
+1617399629507 > STOP-LOSS PRICE 0.000563
+1617399629751 > SELL-OCO EXECUTING orderListId 22387831 :: Quantity 18438
+1617399629751   > STOP_LOSS_LIMIT NEW orderId 88959599 :: Price 0.00056300
+1617399629751   > LIMIT_MAKER     NEW orderId 88959600 :: Price 0.00057900
+1617399630008 > BALANCE 461.53082040 USDT :: 18470.00000000 WIN
+
+RESULTS
+  Buy price:    0.000569 WIN
+  Sell price:   0.000579 WIN
+  Stop price:   0.000563 WIN
+  Est. profit:  0.175602 USDT (2%)
+  Est. loss:    0.119406 USDT (1%)
 
 Done, good luck my friend...
 ```

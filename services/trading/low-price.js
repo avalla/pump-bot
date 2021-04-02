@@ -5,7 +5,10 @@ async function calculateLowPrice(binance, { pair, interval }) {
   const [tick] = ticks;
   const [time, open, high, lowPrice, close] = tick;
 
-  console.log(Date.now(), `Minimum price in ${interval} was`, chalk.red.bold(lowPrice));
+  console.log(
+    Date.now(),
+    chalk.bgGray.white(`> MIN PRICE in ${interval} was ${lowPrice}`)
+  );
   return lowPrice;
 }
 

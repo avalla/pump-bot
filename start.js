@@ -10,6 +10,9 @@ async function start(options) {
     console.log('   Total:    ', chalk.red.bold(total));
     console.log('   Profit:   ', chalk.red.bold(`${profit * 100}%`));
     console.log('   Stop-loss:', chalk.red.bold(`${stopLoss * 100}%`));
+    if (options.dryRun) {
+      console.log('\n', chalk.red.bold('TEST MODE ENABLED! No order will be done'), '\n');
+    }
     console.log(Date.now(), 'Starting Pump-Bot...');
     await pump(options);
   } catch (err) {
