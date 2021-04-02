@@ -19,29 +19,53 @@ thresholds:
 binance:
   api_key: "PUT BINANCE API KEY"
   api_secret: "PUT BINANCE API SECRET"
-dry_run: true
 defaults:
   profit: 0.5
   stopLoss: 0.2
-  total: 11
-  main: "USDT"
-  secondary: "WIN"
-  interval: "30m"
+  interval: "5m"
+  quote: "USDT"
 ```
 
-Execute program:
+Getting help:
 
 ```shell
-$ yarn start
+$ yarn start --help
+
+ /$$$$$$$                                    /$$$$$$$              /$$
+| $$__  $$                                  | $$__  $$            | $$
+| $$  \ $$ /$$   /$$ /$$$$$$/$$$$   /$$$$$$ | $$  \ $$  /$$$$$$  /$$$$$$
+| $$$$$$$/| $$  | $$| $$_  $$_  $$ /$$__  $$| $$$$$$$  /$$__  $$|_  $$_/
+| $$____/ | $$  | $$| $$ \ $$ \ $$| $$  \ $$| $$__  $$| $$  \ $$  | $$
+| $$      | $$  | $$| $$ | $$ | $$| $$  | $$| $$  \ $$| $$  | $$  | $$ /$$
+| $$      |  $$$$$$/| $$ | $$ | $$| $$$$$$$/| $$$$$$$/|  $$$$$$/  |  $$$$/
+|__/       \______/ |__/ |__/ |__/| $$____/ |_______/  \______/    \___/
+                                  | $$
+                                  | $$
+                                  |__/
+
+Made in Italy with ❤ :: Version 1.0.0
+
+
+
+Usage: program [options]
+
+Options:
+  -V, --version                output the version number
+  -d, --dry-run                don't execute order
+  -p, --profit <profit>        profit percentage, use decimals (for 10% use 0.1) (default: 0.5)
+  -sl, --stop-loss <stopLoss>  stop-loss percentage, use decimals (for 10% use 0.1) (default: 0.2)
+  -i, --interval <interval>    candle interval (e.g. 1m, 5m, 1w) (default: "5m")
+  -q, --quote <quote>          quote currency (e.g. BTC, USDT, etc) (default: "USDT")
+  -b, --base <base>            base currency (e.g PIVX, etc)
+  -t, --total <total>          total amount that you to risk
+  -h, --help                   display help for command
+
 ```
 
-Output:
+Run pump-bot!
 
 ```
-$ yarn start
-yarn run v1.22.10
-$ node main.js
-
+$ yarn start -b WIN -q USDT -t 10.5 -p 0.01 -sl 0.01
 
 
 
@@ -61,50 +85,61 @@ Made in Italy with ❤ :: Version 1.0.0
 
 
 
-prompt: Enter candle interval (e.g. 1m, 5m, 1d, 1w, etc):  (30m)
-prompt: Enter profit percentage (enter 0.20 for 20%):  (0.5)
-prompt: Enter stop-loss percentage (enter 0.1 for 10%):  (0.1)
-prompt: How many of main currency (e.g. BTC or USDT):  (10.5)
-prompt: Enter main currency (e.g. BTC or USDT):  (USDT)
-prompt: Enter seconday currency (e.g. WIN):  (BTT)
-1617314257446 Command-line input received:
-   Interval:  30m
-   Pair:      BTTUSDT
+1617393206235 Command-line input received:
+   Interval:  5m
+   Pair:      WINUSDT
    Total:     10.5
-   Profit:    50%
-   Stop-loss: 10%
-1617314257448 Starting Pump-Bot...
-1617314257882 Working with following pair: BTTUSDT
-1617314257882 I will spend: 10.4984 USDT for 2000 BTT
-1617314258211 > BUY FILLED Id 235875738 :: Quantity 2000
-1617314258460 Minimum price in 30m was 0.00523570
-1617314258460 Sell price is 0.007854
-1617314258460 Calculated stop-loss price 0.004725
-  Warning stop-loss order will be lower than threshold so overriding with 0.005001
-1617314258712 > SELL :: Quantity 2000
-1617314258973 > BALANCE 482.65786924 USDT :: 0.00000000 BTT
-Done, exiting...
+   Profit:    1%
+   Stop-loss: 1%
+1617393206236 Starting Pump-Bot...
+1617393206713 Working with following pair: WINUSDT
+1617393206713 I will buy 18655 WIN for 10.5005264 USDT
+  pump BUY WINUSDT 18655 +0ms
+1617393207031 > BUY FILLED orderId 88772068 :: Quantity 18655.00000000 Total 10.51022700
+1617393207310 > BALANCE 482.71350833 USDT :: 18655.00000000 WIN
+1617393207557 Minimum price in 5m was 0.00056065
+1617393207558 Sell price is 0.000566
+1617393207558 Calculated stop-loss price 0.000557
+  pump SELL WINUSDT 18655 0.000566 +0ms
+1617393208232 > SELL-OCO EXECUTING orderListId 22374158 :: Quantity 18655
+1617393208233   > STOP_LOSS_LIMIT NEW orderId 88772090 :: Price 0.00055700
+1617393208233   > LIMIT_MAKER     NEW orderId 88772091 :: Price 0.00056600
+1617393208233 > SELL :: Quantity 18655
+1617393208702 > BALANCE 482.71350833 USDT :: 0.00000000 WIN
+1617393208702 Results
+1617393208702 Buy price:    0.00056288 WIN
+1617393208702 Sell price:   0.000566 WIN
+1617393208702 Stop price:   0.000557 WIN
+1617393208702 Est. profit:  0.05873 USDT (1%)
+1617393208702 Est. loss:    0.109165 USDT (1%)
+
+Done, good luck my friend...
 ```
 
 ## Logic flow
 
-1. Ask for parameters (amount, currencies, interval, stop-loss, profit)
-2. Retrieve market price
-3. Calculate quantity (amount / market price)
-4. Buy amount at market price
-5. Retrieve lower price in last candle
-6. Calculate sell price (lower price + profit)
-7. Place sell and limit orders
+1. Retrieve market price
+2. Calculate quantity (amount / market price)
+3. Buy calculated quantity at market price
+4. Retrieve lower price in last candle with specified interval
+5. Calculate sell price (lower price + profit)
+6. Place sell and limit orders
 
 ## Known issues
 
-Be sure that total buy, sell and stop-less price are higher than minimum order threshold (should be 10USDT or 0.0001BTC). The software will
-do some checks and adjustement, but is better if you manage this values manually.
+Be sure that total buy, sell and stop-loss prices are higher than minimum order threshold (should be 10USDT or 0.0001BTC). The software will
+do some checks and adjustment, but is better if you manage these values manually.
 
 Examples:
 
 - 10 USDT of investment with 10% stop-loss is wrong, 9 USDT is less than 10 USDT threshold.
 - 9 USDT of investment is wrong, 9 USDT is less than 10 USDT threshold.
+
+## Donations
+
+- BTC: `1H4KeNvqQcDLKy97DjhhmA2VawxD5SXto3`
+- ETC: `0xd0c374846EFfd7cEe32e1c233AF8C58C38Cc03D2`
+- XMR: `45GHnspRymU3wagMGwx4vZiPQnBVFDuF3bL7qbfUx1kZajuiGZtVkKdBraPjb1gjTc4GPSvhC8owvPa7smZzmyxAGLh5kjA`
 
 ## Notes
 

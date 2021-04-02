@@ -2,7 +2,7 @@
   "name": "pump-bot",
   "version": "1.0.0",
   "description": "A simple bot that helps to take profit in organized pump events for cryptos.",
-  "main": "main.js",
+  "main": "program.js",
   "scripts": {
     "debug": "node --inspect=127.0.0.1:9239 main.js",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
@@ -28,17 +28,16 @@
     "debug": "^4.3.1",
     "husky": "^6.0.0",
     "js-yaml": "^4.0.0",
-    "node-binance-api": "^0.12.5",
-    "pkg": "^4.5.1",
-    "pretty-quick": "^3.1.0",
-    "prompt": "^1.1.0"
+    "node-binance-api": "^0.12.5"
   },
   "devDependencies": {
     "bestzip": "^2.2.0",
     "eslint": "^7.20.0",
     "eslint-watch": "^7.0.0",
     "jest": "^26.6.3",
-    "prettier": "^2.2.1"
+    "pkg": "^4.5.1",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0"
   },
   "husky": {
     "hooks": {
@@ -48,7 +47,7 @@
   "engines": {
     "node": ">=12.x.x"
   },
-  "bin": "main.js",
+  "bin": "program.js",
   "jest": {
     "displayName": "pump-bot",
     "verbose": true

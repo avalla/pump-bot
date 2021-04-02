@@ -1,12 +1,15 @@
 const debug = require('debug')('pump');
-const chalk = require('chalk')
-async function balance(binance, { main, secondary }) {
+const chalk = require('chalk');
+async function balance(binance, { quote, base }) {
   const balances = await binance.balance();
-  console.log(Date.now(), chalk.bgGray.white(`> BALANCE ${balances[main].available} ${main} :: ${balances[secondary].available} ${secondary}`));
+  console.log(
+    Date.now(),
+    chalk.bgGray.white(`> BALANCE ${balances[quote].available} ${quote} :: ${balances[base].available} ${base}`)
+  );
   return {
-    main: balances[main].available,
-    secondary: balances[secondary].available
-  }
+    quote: balances[quote].available,
+    base: balances[base].available,
+  };
 }
 
 module.exports = balance;

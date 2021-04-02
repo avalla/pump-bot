@@ -1,6 +1,6 @@
-const pkg = require('../package.json');
+const chalk = require('chalk');
+const pkg = require('./package.json');
 const banner = `
-
 
  /$$$$$$$                                    /$$$$$$$              /$$    
 | $$__  $$                                  | $$__  $$            | $$    
@@ -16,7 +16,7 @@ const banner = `
                                                      
 Made in Italy with ❤ :: Version ${pkg.version}
 
-
+                      ${chalk.red.bold('-> USE AT YOUR OWN RISK <-')}
 `;
 
 module.exports = banner;

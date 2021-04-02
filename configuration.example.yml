@@ -4,11 +4,8 @@ thresholds:
 binance:
   api_key: "PUT BINANCE API KEY"
   api_secret: "PUT BINANCE API SECRET"
-dry_run: true
 defaults:
   profit: 0.5
   stopLoss: 0.2
-  total: 10.5
-  main: "USDT"
-  secondary: "WIN"
-  interval: "30m"
+  interval: "5m"
+  quote: "USDT"

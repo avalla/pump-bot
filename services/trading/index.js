@@ -1,6 +1,6 @@
-const buyOrder = require('./buy-order');
-const sellOrder = require('./sell-order');
-const stopOrder = require('./stop-order');
+const marketBuy = require('./market-buy');
+const marketSell = require('./market-sell');
+const sellOco = require('./sell-oco');
 
 const marketPrice = require('./market-price');
 const sellPrice = require('./sell-price');
@@ -9,9 +9,9 @@ const lowPrice = require('./low-price');
 const balance = require('./balance');
 
 module.exports = {
-  buyOrder,
-  sellOrder,
-  stopOrder,
+  marketBuy,
+  marketSell,
+  sellOco,
   marketPrice,
   sellPrice,
   stopPrice,
