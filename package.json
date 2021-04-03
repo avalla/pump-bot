@@ -2,21 +2,21 @@
   "name": "pump-bot",
   "version": "1.0.0",
   "author": "Andrea Valla <valla.andrea@gmail.com>",
-  "license": "GPL",
+  "license": "MIT",
   "description": "A simple bot that helps to take profit in organized pump events for cryptos.",
   "main": "program.js",
   "scripts": {
     "compress": "npx gzip-cli build/pump-bot* -o build/",
     "debug": "node --inspect=127.0.0.1:9239 main.js",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format": "npx prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "lint": "npx eslint",
     "lint:watch": "npx esw -w --color",
     "release": "yarn release:linux && yarn release:mac && yarn release:win",
-    "release:linux": "pkg package.json --output build/pump-bot-linux-x64 -t node12-linux-x64",
-    "release:mac": "pkg package.json --output build/pump-bot-macos-x64 -t node12-macos-x64",
-    "release:win": "pkg package.json --output build/pump-bot-win-x64.exe -t node12-win-x64",
+    "release:linux": "npx pkg package.json --output build/pump-bot-linux-x64 -t node12-linux-x64",
+    "release:mac": "npx pkg package.json --output build/pump-bot-macos-x64 -t node12-macos-x64",
+    "release:win": "npx pkg package.json --output build/pump-bot-win-x64.exe -t node12-win-x64",
     "start": "node main.js",
-    "test": "DEBUG=pump-bot:tests jest --silent"
+    "test": "npx jest --silent"
   },
   "keywords": [
     "coin",
