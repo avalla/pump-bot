@@ -6,6 +6,7 @@ const marketPrice = require('./market-price');
 const sellPrice = require('./sell-price');
 const stopPrice = require('./stop-price');
 const lowPrice = require('./low-price');
+const openPrice = require('./open-price');
 const balance = require('./balance');
 
 module.exports = {
@@ -16,5 +17,6 @@ module.exports = {
   sellPrice,
   stopPrice,
   lowPrice,
+  openPrice,
   balance,
 };

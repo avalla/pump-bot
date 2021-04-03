@@ -1,10 +1,4 @@
 function Trader() {
-  // this._options = {};
-  this._low = 5;
-  this.setLow = function (low = 5) {
-    this._low = low;
-    return this;
-  };
   this.options = function () {
     return this;
   };
@@ -28,7 +22,7 @@ function Trader() {
         Date.now(),
         10, // open
         15, // high
-        this._low || 5, // low
+        5, // low
         10, // close
       ],
     ];

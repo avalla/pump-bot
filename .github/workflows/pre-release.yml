@@ -1,0 +1,37 @@
+name: "pre-release"
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  pre-release:
+    name: "Pre Release"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Install modules
+        run: yarn
+      - name: Run tests
+        run: yarn test
+      - name: "Build"
+        run: |
+          yarn release
+      - name: "Compress"
+        run: |
+          gzip build/pump-bot-linux-x64
+          gzip build/pump-bot-osx-x64
+          gzip build/pump-bot-win-x64
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            build/*

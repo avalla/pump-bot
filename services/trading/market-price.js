@@ -1,14 +1,11 @@
-const chalk = require('chalk')
+const chalk = require('chalk');
 // const debug = require('debug')('pump');
 
-async function calculateMarketPrice(binance, { pair }) {
+async function marketPrice(binance, { pair }) {
   const ticker = await binance.prices(pair);
-  const marketPrice = ticker[pair];
-  console.log(
-    Date.now(),
-    chalk.bgGray.white(`> MKT PRICE: ${marketPrice}`)
-  );
-  return marketPrice;
+  const market = ticker[pair];
+  console.log(Date.now(), chalk.bgGray.white(`> MKT PRICE: ${market}`), ticker);
+  return market;
 }
 
-module.exports = calculateMarketPrice;
+module.exports = marketPrice;

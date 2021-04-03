@@ -1,6 +1,5 @@
-const debug = require('debug')('pump-bot:tests');
 const Trader = require('node-binance-api');
-const trading = require('./services/trading');
+const trading = require('../services/trading');
 const binance = new Trader().options();
 
 BTC_THRESHOLD = 0.0001;
@@ -64,7 +63,6 @@ describe('Pump bot tests', () => {
       const options = { profit, lowPrice };
       const sellPrice = await trading.sellPrice(binance, options);
       expect(sellPrice).toBe(7.5);
-      binance.setLow(undefined);
     });
     it('Sell price #4 - LOW 10 | PROFIT 100% => 20', async () => {
       const profit = 1; // 100%

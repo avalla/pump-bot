@@ -1,17 +1,19 @@
 const debug = require('debug')('pump');
 const chalk = require('chalk');
-const { round } = require('../../helpers')
+const { round } = require('../../helpers');
 
-async function buyOder(binance, { pair, quantity }) {
+async function marketBuy(binance, { pair, quantity }) {
   debug('BUY', pair, quantity);
   const response = await binance.marketBuy(pair, quantity);
   const { orderId, status, cummulativeQuoteQty, executedQty } = response;
-  const buyPrice =round(cummulativeQuoteQty/executedQty)
+  const buyPrice = round(cummulativeQuoteQty / executedQty);
   console.log(
     Date.now(),
-    chalk.bgGreen.white(`> BUY ${status} orderId ${orderId} :: Quantity ${executedQty} Total ${cummulativeQuoteQty} (${buyPrice})`)
+    chalk.bgGreen.white(
+      `> MKT BUY ${status} orderId ${orderId} :: Quantity ${executedQty} Total ${cummulativeQuoteQty} (${buyPrice})`
+    )
   );
-  return { ...response,buyPrice };
+  return { ...response, buyPrice };
 }
 
-module.exports = buyOder;
+module.exports = marketBuy;

@@ -1,4 +1,5 @@
 const chalk = require('chalk');
+
 async function balance(binance, { quote, base }) {
   const balances = await binance.balance();
   console.log(

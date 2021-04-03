@@ -8,7 +8,7 @@ async function marketSell(binance, { pair, quantity }) {
   const { orderId, status, executedQty, cummulativeQuoteQty } = response;
   console.log(
     Date.now(),
-    chalk.bgRed.white(`> SELL ${status} orderId ${orderId} :: Quantity ${executedQty} Total ${cummulativeQuoteQty}`)
+    chalk.bgRed.white(`> MKT SELL ${status} orderId ${orderId} :: Quantity ${executedQty} Total ${cummulativeQuoteQty}`)
   );
   return orderId;
 }

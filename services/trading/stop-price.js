@@ -4,10 +4,7 @@ const { round } = require('../../helpers');
 
 async function calculateStopPrice(binance, { buyPrice, stopLoss, quantity, threshold }) {
   const stopPrice = round((1 - stopLoss) * buyPrice);
-  console.log(
-    Date.now(),
-    chalk.bgGray.white(`> STOP-LOSS PRICE ${stopPrice}`)
-  );
+  console.log(Date.now(), chalk.bgGray.white(`> STOP-LOSS PRICE ${stopPrice}`));
 
   if (stopPrice * quantity < threshold) {
     const override = round(threshold / quantity);
