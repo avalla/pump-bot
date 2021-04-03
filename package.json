@@ -1,10 +1,12 @@
 {
   "name": "pump-bot",
   "version": "1.0.0",
+  "author": "Andrea Valla <valla.andrea@gmail.com>",
+  "license": "GPL",
   "description": "A simple bot that helps to take profit in organized pump events for cryptos.",
   "main": "program.js",
   "scripts": {
-    "compress": "gzip-cli build/pump-bot* -o build/",
+    "compress": "npx gzip-cli build/pump-bot* -o build/",
     "debug": "node --inspect=127.0.0.1:9239 main.js",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "lint": "npx eslint",
@@ -29,8 +31,6 @@
     "pump",
     "pump-and-dump"
   ],
-  "author": "Andrea Valla <valla.andrea@gmail.com>",
-  "license": "GPL",
   "dependencies": {
     "chalk": "^4.1.0",
     "commander": "^7.2.0",
