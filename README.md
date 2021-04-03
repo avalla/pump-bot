@@ -3,6 +3,7 @@
 [![Pump-Bot CI](https://github.com/avalla/pump-bot/workflows/PumpBot%20CI/badge.svg)](https://github.com/avalla/pump-bot/actions/)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8fe96d4d4f9e51723d53/maintainability)](https://codeclimate.com/github/avalla/pump-bot/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/8fe96d4d4f9e51723d53/test_coverage)](https://codeclimate.com/github/avalla/pump-bot/test_coverage)
+![GitHub](https://img.shields.io/github/license/avalla/pump-bot)
 
 A simple bot that helps to take profit in organized crypto pump events.
 
