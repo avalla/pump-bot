@@ -22,11 +22,7 @@ jobs:
       - name: "Build"
         run: |
           yarn release
-      - name: "Compress"
-        run: |
-          gzip build/pump-bot-linux-x64
-          gzip build/pump-bot-osx-x64
-          gzip build/pump-bot-win-x64
+          yarn compress
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -34,4 +30,5 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            build/*
+            build/*.gz
+            coonfiguration.example.yml
