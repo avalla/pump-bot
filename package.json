@@ -15,7 +15,7 @@
     "release:linux": "npx pkg package.json --output build/pump-bot-linux-x64 -t node12-linux-x64",
     "release:mac": "npx pkg package.json --output build/pump-bot-macos-x64 -t node12-macos-x64",
     "release:win": "npx pkg package.json --output build/pump-bot-win-x64.exe -t node12-win-x64",
-    "start": "node main.js",
+    "start": "node program.js",
     "test": "npx jest --silent"
   },
   "keywords": [
