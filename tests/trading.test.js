@@ -2,8 +2,8 @@ const Trader = require('node-binance-api');
 const trading = require('../services/trading');
 const binance = new Trader().options();
 
-BTC_THRESHOLD = 0.0001;
-USDT_THRESHOLD = 10;
+const BTC_THRESHOLD = 0.0001, 
+      USDT_THRESHOLD = 10;
 
 describe('Pump bot tests', () => {
   describe('Stop price', () => {
