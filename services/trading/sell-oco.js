@@ -4,9 +4,9 @@ const chalk = require('chalk');
 async function sellOco(binance, { pair, quantity, sellPrice, stopPrice }) {
   debug('SELL', pair, quantity, sellPrice);
 
-  const response = await binance.sell(pair, quantity, sellPrice, {
-    stopPrice,
-    stopLimitPrice: stopPrice,
+  const response = await binance.sell(pair, quantity, String(sellPrice.toFixed(5)), {
+    stopPrice: String(stopPrice.toFixed(5)),
+    stopLimitPrice: String(stopPrice.toFixed(5)),
     type: 'OCO',
   });
 
